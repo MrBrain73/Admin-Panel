@@ -1,0 +1,231 @@
+@startuml
+interface com.example.hotel.Database.Staff.StaffDao {
+~ void insert(Staff)
+~ void deleteAllStaff()
+~ LiveData<List<Staff>> getAll()
+}
+class com.example.hotel.Fragments.RoomFragment {
+- FragmentRoomBinding binding
+- RoomListAdapter adapter
+- AppDbViewModel roomViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void onCreateOptionsMenu(Menu,MenuInflater)
++ boolean onOptionsItemSelected(MenuItem)
+}
+class com.example.hotel.Fragments.AuthFragment {
+- FragmentAuthBinding binding
+- String emailUser
+- String passwordUser
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+}
+class com.example.hotel.Database.AppDbViewModel {
+- AppRepository roomRepository
+- LiveData<List<Room>> allRooms
+- LiveData<List<Staff>> allStaffs
+- LiveData<List<Visitor>> allVisitors
++ LiveData<List<Room>> getAllRooms()
++ LiveData<List<Staff>> getAllStaffs()
++ LiveData<List<Visitor>> getAllVisitors()
++ void insert(Room)
++ void insert(Staff)
++ void insert(Visitor)
++ void deleteAllRoom()
++ void deleteAllStaff()
++ void deleteAllVisitor()
+}
+class com.example.hotel.Adapters.StaffListAdapter {
+- List<Staff> staffList
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
++ int getItemCount()
++ void setData(List<Staff>)
+}
+class com.example.hotel.Adapters.StaffListAdapter.ViewHolder {
+- ItemListBinding binding
+~ void bind(Staff)
+}
+class com.example.hotel.Fragments.Edit.EditStaffFragment {
+- FragmentEditStaffBinding binding
+- AppDbViewModel staffViewModel
+- String name
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void initFields()
+}
+class com.example.hotel.Fragments.SignFragment {
+- FragmentSignBinding binding
+- String emailUser
+- String passwordUser
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+}
+class com.example.hotel.Fragments.VisitorsFragment {
+- FragmentVisitorsBinding binding
+- VisitorListAdapter adapter
+- AppDbViewModel visitorViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void onCreateOptionsMenu(Menu,MenuInflater)
++ boolean onOptionsItemSelected(MenuItem)
+}
+class com.example.hotel.Database.AppRepository {
+- RoomDao roomDao
+- LiveData<List<Room>> allRooms
+- StaffDao staffDao
+- LiveData<List<Staff>> allStaffs
+- VisitorDao visitorDao
+- LiveData<List<Visitor>> allVisitors
+~ LiveData<List<Room>> getAllRooms()
+~ LiveData<List<Staff>> getAllStaffs()
+~ LiveData<List<Visitor>> getAllVisitors()
+~ void insert(Room)
+~ void insert(Staff)
+~ void insert(Visitor)
+~ void deleteAllRoom()
+~ void deleteAllStaff()
+~ void deleteAllVisitor()
+}
+class com.example.hotel.MainActivity {
+- ActivityMainBinding binding
+- NavController navController
+# void onCreate(Bundle)
++ void onBackPressed()
+- Fragment getCurrentFragment()
+- void invisibleView()
+}
+class com.example.hotel.Database.Rooms.Room {
+- int id
+- int numberRoom
+- String classRoom
+- int capacityRoom
+- int priceRoom
++ int getId()
++ void setId(int)
++ int getNumberRoom()
++ void setNumberRoom(int)
++ String getClassRoom()
++ void setClassRoom(String)
++ int getCapacityRoom()
++ void setCapacityRoom(int)
++ int getPriceRoom()
++ void setPriceRoom(int)
+}
+class com.example.hotel.Fragments.StaffFragment {
+- FragmentStaffBinding binding
+- StaffListAdapter adapter
+- AppDbViewModel staffViewModel
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
++ void onCreateOptionsMenu(Menu,MenuInflater)
++ boolean onOptionsItemSelected(MenuItem)
+}
+class com.example.hotel.Adapters.RoomListAdapter {
+- List<Room> roomList
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
++ int getItemCount()
++ void setData(List<Room>)
+}
+class com.example.hotel.Adapters.RoomListAdapter.ViewHolder {
+- ItemListBinding binding
+~ void bind(Room)
+}
+interface com.example.hotel.Database.Rooms.RoomDao {
+~ void insert(Room)
+~ void deleteAllRoom()
+~ LiveData<List<Room>> getAll()
+}
+class com.example.hotel.Database.Staff.Staff {
+- int id
+- String name
+- String surname
++ int getId()
++ void setId(int)
++ String getName()
++ void setName(String)
++ String getSurname()
++ void setSurname(String)
+}
+interface com.example.hotel.Database.Visitors.VisitorDao {
+~ void insert(Visitor)
+~ void deleteAllVisitor()
+~ LiveData<List<Visitor>> getAll()
+}
+class com.example.hotel.Database.Visitors.Visitor {
+- int id
+- String name
+- String surname
+- int countDay
+- int phone
++ int getPhone()
++ void setPhone(int)
++ int getCountDay()
++ void setCountDay(int)
++ int getId()
++ void setId(int)
++ String getName()
++ void setName(String)
++ String getSurname()
++ void setSurname(String)
+}
+class com.example.hotel.Adapters.VisitorListAdapter {
+- List<Visitor> visitorList
++ ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(ViewHolder,int)
++ int getItemCount()
++ void setData(List<Visitor>)
+}
+class com.example.hotel.Adapters.VisitorListAdapter.ViewHolder {
+- ItemListBinding binding
+~ void bind(Visitor)
+}
+abstract class com.example.hotel.Database.AppDatabase {
+- {static} AppDatabase INSTANCE
+- {static} int NUMBER_OF_THREADS
+~ {static} ExecutorService databaseWriteExecutor
++ {abstract}RoomDao roomDao()
++ {abstract}StaffDao staffDao()
++ {abstract}VisitorDao visitorDao()
+~ {static} AppDatabase getDatabase(Context)
+}
+class com.example.hotel.Fragments.Edit.EditRoomFragment {
+- FragmentEditRoomBinding binding
+- AppDbViewModel roomViewModel
+- String number
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void initFields()
+}
+class com.example.hotel.Fragments.Edit.EditVisitorFragment {
+- FragmentEditVisitorBinding binding
+- AppDbViewModel visitorViewModel
+- String name
++ View onCreateView(LayoutInflater,ViewGroup,Bundle)
++ void onViewCreated(View,Bundle)
+- void initFields()
+}
+
+
+androidx.fragment.app.Fragment <|-- com.example.hotel.Fragments.RoomFragment
+androidx.fragment.app.Fragment <|-- com.example.hotel.Fragments.AuthFragment
+androidx.lifecycle.AndroidViewModel <|-- com.example.hotel.Database.AppDbViewModel
+com.example.hotel.Adapters.Adapter <|-- com.example.hotel.Adapters.StaffListAdapter
+com.example.hotel.Adapters.StaffListAdapter +.. com.example.hotel.Adapters.StaffListAdapter.ViewHolder
+com.example.hotel.Adapters.ViewHolder <|-- com.example.hotel.Adapters.StaffListAdapter.ViewHolder
+androidx.fragment.app.Fragment <|-- com.example.hotel.Fragments.Edit.EditStaffFragment
+androidx.fragment.app.Fragment <|-- com.example.hotel.Fragments.SignFragment
+androidx.fragment.app.Fragment <|-- com.example.hotel.Fragments.VisitorsFragment
+androidx.appcompat.app.AppCompatActivity <|-- com.example.hotel.MainActivity
+androidx.fragment.app.Fragment <|-- com.example.hotel.Fragments.StaffFragment
+com.example.hotel.Adapters.Adapter <|-- com.example.hotel.Adapters.RoomListAdapter
+com.example.hotel.Adapters.RoomListAdapter +.. com.example.hotel.Adapters.RoomListAdapter.ViewHolder
+com.example.hotel.Adapters.ViewHolder <|-- com.example.hotel.Adapters.RoomListAdapter.ViewHolder
+com.example.hotel.Adapters.Adapter <|-- com.example.hotel.Adapters.VisitorListAdapter
+com.example.hotel.Adapters.VisitorListAdapter +.. com.example.hotel.Adapters.VisitorListAdapter.ViewHolder
+com.example.hotel.Adapters.ViewHolder <|-- com.example.hotel.Adapters.VisitorListAdapter.ViewHolder
+androidx.room.RoomDatabase <|-- com.example.hotel.Database.AppDatabase
+androidx.fragment.app.Fragment <|-- com.example.hotel.Fragments.Edit.EditRoomFragment
+androidx.fragment.app.Fragment <|-- com.example.hotel.Fragments.Edit.EditVisitorFragment
+@enduml
