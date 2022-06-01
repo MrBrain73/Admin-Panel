@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/authFragment">
+
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.hotel.Fragments.AuthFragment"
+        android:label="@string/label_login"
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_authFragment_to_signFragment"
+            app:destination="@id/signFragment" />
+        <action
+            android:id="@+id/action_authFragment_to_roomFragment"
+            app:destination="@id/roomFragment"
+            app:popUpToInclusive="false"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/signFragment"
+        android:name="com.example.hotel.Fragments.SignFragment"
+        android:label="@string/label_signup"
+        tools:layout="@layout/fragment_sign" >
+        <action
+            android:id="@+id/action_signFragment_to_authFragment"
+            app:destination="@id/authFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/roomFragment"
+        android:name="com.example.hotel.Fragments.RoomFragment"
+        android:label="@string/label_rooms"
+        tools:layout="@layout/fragment_room">
+
+        <action
+            android:id="@+id/action_roomFragment_to_visitorsFragment"
+            app:destination="@id/visitorsFragment" />
+        <action
+            android:id="@+id/action_roomFragment_to_staffFragment"
+            app:destination="@id/staffFragment" />
+        <action
+            android:id="@+id/action_roomFragment_to_editRoomFragment"
+            app:destination="@id/editRoomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/staffFragment"
+        android:name="com.example.hotel.Fragments.StaffFragment"
+        android:label="@string/label_staff"
+        tools:layout="@layout/fragment_staff" >
+        <action
+            android:id="@+id/action_staffFragment_to_roomFragment"
+            app:destination="@id/roomFragment" />
+        <action
+            android:id="@+id/action_staffFragment_to_editStaffFragment"
+            app:destination="@id/editStaffFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/visitorsFragment"
+        android:name="com.example.hotel.Fragments.VisitorsFragment"
+        android:label="@string/label_visitors"
+        tools:layout="@layout/fragment_visitors" >
+        <action
+            android:id="@+id/action_visitorsFragment_to_roomFragment"
+            app:destination="@id/roomFragment" />
+        <action
+            android:id="@+id/action_visitorsFragment_to_editVisitorFragment"
+            app:destination="@id/editVisitorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editRoomFragment"
+        android:name="com.example.hotel.Fragments.Edit.EditRoomFragment"
+        android:label="fragment_edit_room"
+        tools:layout="@layout/fragment_edit_room" >
+        <action
+            android:id="@+id/action_editRoomFragment_to_roomFragment"
+            app:destination="@id/roomFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editStaffFragment"
+        android:name="com.example.hotel.Fragments.Edit.EditStaffFragment"
+        android:label="fragment_edit_staff"
+        tools:layout="@layout/fragment_edit_staff" >
+        <action
+            android:id="@+id/action_editStaffFragment_to_staffFragment"
+            app:destination="@id/staffFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editVisitorFragment"
+        android:name="com.example.hotel.Fragments.Edit.EditVisitorFragment"
+        android:label="fragment_edit_visitor"
+        tools:layout="@layout/fragment_edit_visitor" >
+        <action
+            android:id="@+id/action_editVisitorFragment_to_visitorsFragment"
+            app:destination="@id/visitorsFragment" />
+    </fragment>
+</navigation>

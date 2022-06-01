@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Hotel</string>
+
+    <!-- Button -->
+    <string name="signup_button">Sign Up</string>
+    <string name="login_button">Log In</string>
+    <string name="add_item">Add Item</string>
+    <string name="save_button">Save</string>
+
+    <!-- SignUp Fragment -->
+    <string name="email_signup">Enter your mail</string>
+    <string name="password_signup">Come up with a password</string>
+    <string name="password_conf_signup">Confirm your password</string>
+
+    <!-- LogIn Fragment -->
+    <string name="email_login">Email</string>
+    <string name="password_login">Password</string>
+
+    <!-- Error -->
+    <string name="pass_do_not_match">Password don\'t match</string>
+    <string name="email_incorrect">Incorrect email</string>
+    <string name="field_empty">Empty field</string>
+
+    <!-- Success -->
+    <string name="regis_success">The administrator is registered</string>
+    <string name="success">Success</string>
+
+    <!-- Menu -->
+    <string name="header_menu">Hotel Admin</string>
+    <string name="label_login">Log In</string>
+    <string name="label_signup">Sign Up</string>
+    <string name="label_rooms">Rooms</string>
+    <string name="label_staff">Staff</string>
+    <string name="label_visitors">Visitors</string>
+    <string name="delete_item">Delete</string>
+
+    <!-- Edit room -->
+    <string name="label_number">Number:</string>
+    <string name="label_class">Class:</string>
+    <string name="label_capacity">Capacity:</string>
+    <string name="label_price">Price:</string>
+
+    <!-- Edit Staff & Visitor -->
+    <string name="label_name">First name:</string>
+    <string name="label_surname">Surname:</string>
+
+    <!-- Edit visitor -->
+    <string name="label_count">Time of stay:</string>
+    <string name="label_phone">Phone:</string>
+</resources>
