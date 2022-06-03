@@ -41,7 +41,7 @@ public class EditStaffFragment extends Fragment {
         binding.buttonSave.setOnClickListener(v -> {
             initFields();
 
-            if (name.equals("") && surname.equals("")) {
+            if (!(name.equals("") && surname.equals(""))) {
                 Staff staff = new Staff(name, surname);
 
                 staffViewModel.insert(staff);

@@ -41,7 +41,8 @@ public class EditVisitorFragment extends Fragment {
         binding.buttonSave.setOnClickListener(v -> {
             initFields();
 
-            if (name.equals("") && surname.equals("") && countDay.equals("") && phone.equals("")) {
+            if (!(name.equals("") && surname.equals("")
+                    && countDay.equals("") && phone.equals(""))) {
                 Visitor visitor = new Visitor(name, surname,
                         Integer.parseInt(countDay), Integer.parseInt(phone));
 

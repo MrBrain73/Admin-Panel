@@ -41,8 +41,8 @@ public class EditRoomFragment extends Fragment {
         binding.buttonSave.setOnClickListener(v -> {
             initFields();
 
-            if (number.equals("") && classOfRoom.equals("")
-                    && capacity.equals("") && price.equals("")) {
+            if (!(number.equals("") && classOfRoom.equals("")
+                    && capacity.equals("") && price.equals(""))) {
                 Room room = new Room(Integer.parseInt(number), classOfRoom,
                         Integer.parseInt(capacity), Integer.parseInt(price));
 
