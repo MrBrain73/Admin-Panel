@@ -42,6 +42,12 @@ class AppRepository {
     LiveData<List<Staff>> getAllStaffs() {return allStaffs;}
     LiveData<List<Visitor>> getAllVisitors() {return allVisitors;}
 
+    LiveData<Room> getRoomByNum(int number) { return roomDao.getRoomByNumber(number); }
+
+    void updateItem(Room room) {
+        AppDatabase.databaseWriteExecutor.execute(() -> roomDao.updateItem(room));
+    }
+
     void insert(Room room) {
         AppDatabase.databaseWriteExecutor.execute(() -> roomDao.insert(room));
     }

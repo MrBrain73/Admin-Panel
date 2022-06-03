@@ -12,12 +12,15 @@ public class Room {
     private String classRoom;
     private int capacityRoom;
     private int priceRoom;
+    private boolean isTaken;
 
-    public Room(int numberRoom, String classRoom, int capacityRoom, int priceRoom) {
+    public Room(int numberRoom, String classRoom,
+                int capacityRoom, int priceRoom, boolean isTaken) {
         this.capacityRoom = capacityRoom;
         this.numberRoom = numberRoom;
         this.classRoom = classRoom;
         this.priceRoom = priceRoom;
+        this.isTaken = isTaken;
     }
 
     public int getId() {
@@ -58,5 +61,13 @@ public class Room {
 
     public void setPriceRoom(int priceRoom) {
         this.priceRoom = priceRoom;
+    }
+
+    public boolean isTaken() {
+        return isTaken;
+    }
+
+    public void setTaken(boolean taken) {
+        isTaken = taken;
     }
 }

@@ -31,11 +31,15 @@ public class AppDbViewModel extends AndroidViewModel {
     public LiveData<List<Staff>> getAllStaffs() {return  allStaffs;}
     public LiveData<List<Visitor>> getAllVisitors() {return  allVisitors;}
 
+    public LiveData<Room> getRoomByNum(int number) { return roomRepository.getRoomByNum(number); }
+
+    public void updateItem(Room room) {roomRepository.updateItem(room);}
+
     public void insert(Room room) { roomRepository.insert(room); }
-    public void insert(Staff staff) {roomRepository.insert(staff);}
-    public void insert(Visitor visitor) {roomRepository.insert(visitor);}
+    public void insert(Staff staff) { roomRepository.insert(staff);}
+    public void insert(Visitor visitor) { roomRepository.insert(visitor); }
 
     public void deleteAllRoom() { roomRepository.deleteAllRoom(); }
-    public void deleteAllStaff() {roomRepository.deleteAllStaff();}
+    public void deleteAllStaff() { roomRepository.deleteAllStaff();}
     public void deleteAllVisitor() {roomRepository.deleteAllVisitor();}
 }

@@ -19,7 +19,9 @@
     <!-- Error -->
     <string name="pass_do_not_match">Password don\'t match</string>
     <string name="email_incorrect">Incorrect email</string>
-    <string name="field_empty">Empty field</string>
+    <string name="field_empty">Field is empty</string>
+    <string name="error_taken">It\'s already taken</string>
+    <string name="error_parse_int">Incorrect syntax</string>
 
     <!-- Success -->
     <string name="regis_success">The administrator is registered</string>
@@ -41,10 +43,14 @@
     <string name="label_price">Price:</string>
 
     <!-- Edit Staff & Visitor -->
-    <string name="label_name">First name:</string>
-    <string name="label_surname">Surname:</string>
+    <string name="label_name">Name</string>
+    <string name="label_surname">Surname</string>
 
     <!-- Edit visitor -->
-    <string name="label_count">Time of stay:</string>
-    <string name="label_phone">Phone:</string>
+    <string name="label_phone">Phone</string>
+    <string name="label_house">Room</string>
+    <string name="label_date">Date</string>
+
+    <!-- DatePicker -->
+    <string name="title_picker">Select date</string>
 </resources>

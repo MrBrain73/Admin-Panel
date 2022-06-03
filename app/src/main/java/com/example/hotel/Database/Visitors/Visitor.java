@@ -1,6 +1,7 @@
 package com.example.hotel.Database.Visitors;
 
 
+import androidx.core.util.Pair;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -11,10 +12,10 @@ public class Visitor {
     private int id;
     private String name;
     private String surname;
-    private int countDay;
+    private String countDay;
     private int phone;
 
-    public Visitor(String name, String surname, int countDay, int phone) {
+    public Visitor(String name, String surname, String countDay, int phone) {
         this.name = name;
         this.surname = surname;
         this.countDay = countDay;
@@ -29,11 +30,11 @@ public class Visitor {
         this.phone = phone;
     }
 
-    public int getCountDay() {
+    public String getCountDay() {
         return countDay;
     }
 
-    public void setCountDay(int countDay) {
+    public void setCountDay(String countDay) {
         this.countDay = countDay;
     }
 

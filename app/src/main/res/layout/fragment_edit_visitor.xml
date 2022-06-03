@@ -7,107 +7,18 @@
     tools:context=".Fragments.Edit.EditVisitorFragment"
     android:padding="15dp">
 
-    <TextView
-        android:id="@+id/labelName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/imgPerson"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
 
-        android:text="@string/label_name"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
+        android:src="@drawable/icon_person"
 
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textName"
-        app:layout_constraintBottom_toTopOf="@+id/labelSurname"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintStart_toEndOf="@id/labelName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textSurname">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:inputType="text"
-            android:maxLines="1"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/labelSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="@string/label_surname"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-
-        app:layout_constraintTop_toBottomOf="@+id/labelName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textSurname"
-        app:layout_constraintBottom_toTopOf="@+id/labelCountDay"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textSurname"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintStart_toEndOf="@id/labelSurname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textName"
-        app:layout_constraintBottom_toTopOf="@id/textCountDay">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:inputType="text"
-            android:maxLines="1"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/labelCountDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="@string/label_count"
-        android:fontFamily="@font/roboto_medium"
-        android:textSize="20sp"
-
-        app:layout_constraintTop_toBottomOf="@+id/labelSurname"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textCountDay"
-        app:layout_constraintBottom_toTopOf="@+id/labelPhone"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textCountDay"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintStart_toEndOf="@id/labelCountDay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textSurname"
-        app:layout_constraintBottom_toTopOf="@+id/textPhone">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:inputType="text"
-            android:maxLines="1"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/labelPhone"
+        android:id="@+id/imgPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -115,20 +26,61 @@
         android:fontFamily="@font/roboto_medium"
         android:textSize="20sp"
 
-        app:layout_constraintTop_toBottomOf="@+id/labelCountDay"
+        android:layout_marginTop="15dp"
+
+        app:layout_constraintBottom_toTopOf="@id/labelRoom"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/textPhone"
+        app:layout_constraintTop_toBottomOf="@id/imgPerson"/>
+
+    <TextView
+        android:id="@+id/labelRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/label_house"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="20sp"
+
+        app:layout_constraintTop_toBottomOf="@id/imgPhone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/labelDate"/>
+
+    <TextView
+        android:id="@+id/labelDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/label_date"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="20sp"
+
+        app:layout_constraintTop_toBottomOf="@id/labelRoom"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="imgPerson, imgPhone, labelRoom, labelDate"/>
+
+    <android.widget.Space
+        android:id="@+id/space"
+        android:layout_width="15dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@+id/barrier"/>
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textPhone"
+        android:id="@+id/textName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        app:layout_constraintStart_toEndOf="@id/labelPhone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textCountDay"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:hint="@string/label_name"
+
+        app:layout_constraintStart_toEndOf="@id/space"
+        app:layout_constraintBaseline_toBaselineOf="@id/imgPerson"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -139,7 +91,80 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textSurname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+
+        android:hint="@string/label_surname"
+
+        app:layout_constraintStart_toEndOf="@id/space"
+        app:layout_constraintTop_toBottomOf="@id/textName"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:inputType="text"
+            android:maxLines="1"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toEndOf="@id/space"
+        app:layout_constraintBaseline_toBaselineOf="@id/imgPhone"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textRoom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintStart_toEndOf="@id/space"
+        app:layout_constraintBaseline_toBaselineOf="@id/labelRoom"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:inputType="text"
+            android:maxLines="1"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/datePickerBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        style="@style/Widget.Material3.Button.Icon"
+        android:textSize="20sp"
+        android:backgroundTint="@color/black"
+        app:icon="@drawable/icon_calender"
+        android:text="@string/title_picker"
+
+        app:layout_constraintStart_toEndOf="@id/space"
+        app:layout_constraintBaseline_toBaselineOf="@id/labelDate"/>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -147,6 +172,8 @@
         android:text="@string/save_button"
 
         android:backgroundTint="@color/black"
+        style="@style/Widget.Material3.Button"
+        android:textSize="20sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

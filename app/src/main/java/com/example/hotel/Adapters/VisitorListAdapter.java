@@ -29,7 +29,7 @@ public class VisitorListAdapter extends RecyclerView.Adapter<VisitorListAdapter.
 
         void bind(Visitor visitor) {
             binding.itemTitle.setText(String.valueOf(visitor.getSurname()));
-            binding.itemSubTitle.setText(String.valueOf(visitor.getName()));
+            binding.itemSubTitle.setText(String.valueOf(visitor.getCountDay()));
         }
     }
 

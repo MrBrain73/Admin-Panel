@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {com.example.hotel.Database.Rooms.Room.class, Staff.class, Visitor.class},
-        version = 4, exportSchema = false)
+        version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract RoomDao roomDao();
     public abstract StaffDao staffDao();
