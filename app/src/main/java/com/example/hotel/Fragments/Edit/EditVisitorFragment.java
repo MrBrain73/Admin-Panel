@@ -48,8 +48,10 @@ public class EditVisitorFragment extends Fragment {
                 .setTitleText(R.string.title_picker)
                 .build();
 
-        datePicker.addOnPositiveButtonClickListener(selection ->
-                countDay = datePicker.getHeaderText());
+        datePicker.addOnPositiveButtonClickListener(selection -> {
+            countDay = datePicker.getHeaderText();
+            binding.dateText.setText(countDay);
+        });
 
         binding.datePickerBtn.setOnClickListener(v -> {
             datePicker.show(getParentFragmentManager(), "DATE_PICKER");
@@ -62,23 +64,27 @@ public class EditVisitorFragment extends Fragment {
                 visitorViewModel.getRoomByNum(Integer.parseInt(room))
                         .observe(getViewLifecycleOwner(), room1 -> currentRoom = room1);
                 if (!(name.equals("") && surname.equals("")
-                        && countDay == null && phone.equals(""))) {
-                    if (!currentRoom.isTaken()) {
-                        try {
-                            currentRoom.setTaken(true);
+                        && countDay.equals("") && phone.equals(""))) {
+                    try {
+                        if (!currentRoom.isTaken()) {
+                            try {
+                                currentRoom.setTaken(true);
 
-                            Visitor visitor = new Visitor(name, surname,
-                                    countDay, Integer.parseInt(phone));
+                                Visitor visitor = new Visitor(name, surname,
+                                        countDay, Integer.parseInt(phone));
 
-                            visitorViewModel.insert(visitor);
-                            visitorViewModel.updateItem(currentRoom);
+                                visitorViewModel.insert(visitor);
+                                visitorViewModel.updateItem(currentRoom);
 
-                            Navigation.findNavController(view)
-                                    .navigate(R.id.action_editVisitorFragment_to_visitorsFragment);
-                        } catch (NumberFormatException ex) {
-                            binding.textPhone.setError(getString(R.string.error_parse_int));
-                        }
-                    } else binding.textRoom.setError(getString(R.string.error_taken));
+                                Navigation.findNavController(view)
+                                        .navigate(R.id.action_editVisitorFragment_to_visitorsFragment);
+                            } catch (NumberFormatException ex) {
+                                binding.textPhone.setError(getString(R.string.error_parse_int));
+                            }
+                        } else binding.textRoom.setError(getString(R.string.error_taken));
+                    } catch (NullPointerException ex) {
+                        Toast.makeText(requireContext(), R.string.field_empty, Toast.LENGTH_LONG).show();
+                    }
                 } else
                     Toast.makeText(requireContext(), R.string.field_empty, Toast.LENGTH_LONG).show();
             } else binding.textRoom.setError(getString(R.string.field_empty));
